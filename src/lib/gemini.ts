@@ -1,6 +1,10 @@
 import { GoogleGenAI, Type } from "@google/genai";
 
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || '' });
+const apiKey = process.env.KEY;
+if (!apiKey) {
+  console.error("KEY is missing from the environment variables.");
+}
+const ai = new GoogleGenAI({ apiKey: apiKey || '' });
 
 export interface Persona {
   id: string;
